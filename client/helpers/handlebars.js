@@ -132,11 +132,11 @@ Handlebars.registerHelper('breakLines', function (text) {
       protocol = "http://";
     }
 
-    var anchorTag = " <a target=\"_blank\" href=\"" + protocol + url + "\">" + url + 'lalalla' + "</a>";
+    var anchorTag = " <a target=\"_blank\" href=\"" + protocol + url + "\">" + url + "</a>";
     result = result.replace(regex, anchorTag);
   })
 
-      // convert image links to <img> tag.
+    // convert image links to <img> tag.
   var matchImgs = /(\[IMG])(.*?)(\[\/IMG])/gm;
   var extractedImgUrls = result.match(matchImgs);
   _.each(extractedImgUrls, function(url) {
@@ -153,23 +153,6 @@ Handlebars.registerHelper('breakLines', function (text) {
     result = result.replace(regex, anchorTag);
 
   });
-
-    // convert image links to <img> tag.
-    var matchImgs = /(\[IMG])(.*?)(\[\/IMG])/gm;
-    var extractedImgUrls = result.match(matchImgs);
-    _.each(extractedImgUrls, function(url) {
-
-      url.replace(/(\[IMG])|(\[\/IMG])/gm,'');
-      var regex = new RegExp(url, "g");
-      var cleanedUrl = url.trim();
-      var protocol = '';
-      if (url.indexOf("http") === -1) {
-        protocol = "http://";
-      }
-        //" <a target=\"_blank\" href=\"" + protocol + cleanedUrl + "\">" + cleanedUrl + "</a>";
-      var anchorTag = '<img src="'+protocol + cleanedUrl +'" style="max-width: 100%;" ><br>';
-      result = result.replace(regex, anchorTag);
-    });
 
   // // add images that are attached to ticket
   // var matchImages = /!!(\S+(?=\|))[^\s!]*!/gi;
