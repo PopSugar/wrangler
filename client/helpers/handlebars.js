@@ -137,7 +137,7 @@ Handlebars.registerHelper('breakLines', function (text) {
   })
 
     // convert image links to <img> tag.
-  var matchImgs = /(\[IMG])(.*?)(\[\/IMG])/gm;
+  var matchImgs = /(^|\s)((\[IMG])(.*?)(\[\/IMG]))/gm;
   var extractedImgUrls = result.match(matchImgs);
   _.each(extractedImgUrls, function(url) {
 
