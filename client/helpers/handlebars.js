@@ -132,7 +132,7 @@ Handlebars.registerHelper('breakLines', function (text) {
       protocol = "http://";
     }
 
-    var anchorTag = " <a target=\"_blank\" href=\"" + protocol + url + "\">" + url + "</a>";
+    var anchorTag = " <a target=\"_blank\" href=\"" + protocol + url + "\">" + url + 'lalalla' + "</a>";
     result = result.replace(regex, anchorTag);
   })
 
