@@ -141,16 +141,16 @@ Handlebars.registerHelper('breakLines', function (text) {
   var extractedImgUrls = result.match(matchImgs);
   _.each(extractedImgUrls, function(url) {
 
-    var regex = new RegExp(url, "g");
     var cleanedUrl = url.replace(/(\[IMG])|(\[\/IMG])/gm,'').trim();
+    var regex = new RegExp(cleanedUrl, "g");
 
     var protocol = '';
     if (url.indexOf("http") === -1) {
       protocol = "http://";
     }
         //" <a target=\"_blank\" href=\"" + protocol + cleanedUrl + "\">" + cleanedUrl + "</a>";
-    var anchorTag = '<img src="'+ protocol + cleanedUrl +'" style="max-width: 100%;" ><br>';
-    result = result.replace(regex, anchorTag);
+    var anchorTag = '<img src="'+ protocol + cleanedUrl +'" style="max-width: 100%;"/><br>';
+    result = result.replace(/(\[IMG])|(\[\/IMG])/gm,'').replace(regex, anchorTag);
 
   });
 
