@@ -134,7 +134,7 @@ Handlebars.registerHelper('breakLines', function (text) {
 
     var anchorTag = " <a target=\"_blank\" href=\"" + protocol + url + "\">" + url + "</a>";
     result = result.replace(regex, anchorTag);
-  })
+  });
 
     // convert image links to <img> tag.
   var matchImgs = /(^|\s)((\[IMG])(.*?)(\[\/IMG]))/gm;
