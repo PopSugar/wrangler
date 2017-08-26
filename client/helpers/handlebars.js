@@ -139,6 +139,7 @@ Handlebars.registerHelper('breakLines', function (text) {
     // convert image links to <img> tag.
   var matchImgs = /(^|\s)((\[IMG])(.*?)(\[\/IMG]))/gm;
   var extractedImgUrls = result.match(matchImgs);
+  result = result.replace(/(\[IMG])|(\[\/IMG])/gm,'');
   _.each(extractedImgUrls, function(url) {
 
     var cleanedUrl = url.replace(/(\[IMG])|(\[\/IMG])/gm,'').trim();
@@ -148,9 +149,9 @@ Handlebars.registerHelper('breakLines', function (text) {
     if (url.indexOf("http") === -1) {
       protocol = "http://";
     }
-        //" <a target=\"_blank\" href=\"" + protocol + cleanedUrl + "\">" + cleanedUrl + "</a>";
+
     var anchorTag = '<img src="'+ protocol + cleanedUrl +'" style="max-width: 100%;"/><br>';
-    result = result.replace(/(\[IMG])|(\[\/IMG])/gm,'').replace(regex, anchorTag);
+    result = result.replace(regex, anchorTag);
 
   });
 
